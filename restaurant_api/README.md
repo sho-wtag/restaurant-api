@@ -1,6 +1,8 @@
 # Restaurant Reservation API
 
-https://api-restaurants.herokuapp.com/
+API:  https://api-restaurants.herokuapp.com/
+
+API Doc:  https://doc-api-restaurant.herokuapp.com/index.html
 
 ## API
 
@@ -79,5 +81,42 @@ https://api-restaurants.herokuapp.com/
             "dining_table_name": "Table-3"
         }
     }
+}
+```
+
+## Get list of reservations in a restaurant. 
+
+* GET `/reservations/restaurant_id`
+
+#### Response Body: 
+
+```json
+{
+    "data": [
+        {
+            "reservation_time": "10:00AM",
+            "guest_count": 5,
+            "guest_name": "altruist",
+            "dining_table_name": "Table-5"
+        },
+        {
+            "reservation_time": "10:00AM",
+            "guest_count": 5,
+            "guest_name": "altruist",
+            "dining_table_name": "Table-5"
+        },
+        {
+            "reservation_time": "09:00PM",
+            "guest_count": 3,
+            "guest_name": "john",
+            "dining_table_name": "Table-3"
+        },
+        {
+            "reservation_time": "09:00AM",
+            "guest_count": 2,
+            "guest_name": "altruist",
+            "dining_table_name": "Table-6"
+        }
+    ]
 }
 ```
