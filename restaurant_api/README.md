@@ -1,24 +1,46 @@
-# README
+# Restaurant Reservation API
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+https://api-restaurants.herokuapp.com/
 
-Things you may want to cover:
+## API
 
-* Ruby version
+## Create reservation
 
-* System dependencies
+* Post JSON to `/reservations`
 
-* Configuration
+### Request
 
-* Database creation
+* Type: `POST`
+* Header: `Content-Type: application/json`
+* Body:
 
-* Database initialization
+```json
+{
+  "guest":{
+  	"name": "altruist",
+    "email": "altruist2692@gmail.com"
+  },
+  "reservation":{
+  	"dining_table_id": 4,
+    "restaurant_id": 3,
+    "guest_count": 2,
+    "reservation_time": "9 AM",
+    "shift_id": 1
+  }
+}
+```
 
-* How to run the test suite
+#### Response Body:
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```json
+{
+    "data": {
+        "reservation": {
+            "reservation_time": "09:00AM",
+            "guest_count": 2,
+            "guest_name": "altruist",
+            "dining_table_name": "Table-4"
+        }
+    }
+}
+```
