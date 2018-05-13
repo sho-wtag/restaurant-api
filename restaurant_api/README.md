@@ -44,3 +44,40 @@ https://api-restaurants.herokuapp.com/
     }
 }
 ```
+
+## Update reservation
+
+* PUT JSON to `/reservations/reservation_id`
+
+### Request
+
+* Type: `PUT`
+* Header: `Content-Type: application/json`
+* Body:
+
+```json
+{
+  "reservation":{
+  	"dining_table_id": 3,
+    "restaurant_id": 1,
+    "guest_count": 3,
+    "reservation_time": "11 PM",
+    "shift_id": 2
+  }
+}
+```
+
+#### Response Body:
+
+```json
+{
+    "data": {
+        "reservation": {
+            "reservation_time": "11:00PM",
+            "guest_count": 3,
+            "guest_name": "john",
+            "dining_table_name": "Table-3"
+        }
+    }
+}
+```
