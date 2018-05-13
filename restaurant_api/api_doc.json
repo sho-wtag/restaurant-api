@@ -1,0 +1,176 @@
+{
+  "name": "Restaurant API",
+  "url": "https://api-restaurant.herokuapp.com/",
+  "version": "1.0",
+  "copyright": "2018",
+  "description": "Restaurant API is simple app to manage reservations for a restaurant",
+  "authentication": "As of now there is no authentication required. All API is open",
+  "errors": {
+    "http_errors": [{
+        "code": 200,
+        "text": "OK",
+        "description": "Success"
+      },
+      {
+        "code": 400,
+        "text": "Bad Request",
+        "description": "The request was invalid or cannot be otherwise served"
+      }
+    ],
+    "api_errors": []
+  },
+  "resources": {
+    "reservation": [{
+        "action": "GET",
+        "uri": "/reservations/restaurant_id",
+        "description": "Retrieve all the reservations of a specified restaurant.",
+        "headers": {
+          "content-type": "application/json",
+          "accept": "application/json"
+        },
+        "response": {
+          "data": [{
+              "reservation_time": "10:00AM",
+              "guest_count": 5,
+              "guest_name": "altruist",
+              "dining_table_name": "Table-5"
+            },
+            {
+              "reservation_time": "10:00AM",
+              "guest_count": 5,
+              "guest_name": "altruist",
+              "dining_table_name": "Table-5"
+            },
+            {
+              "reservation_time": "09:00PM",
+              "guest_count": 3,
+              "guest_name": "john",
+              "dining_table_name": "Table-3"
+            },
+            {
+              "reservation_time": "09:00AM",
+              "guest_count": 2,
+              "guest_name": "altruist",
+              "dining_table_name": "Table-6"
+            }
+          ]
+        }
+      },
+      {
+        "action": "POST",
+        "uri": "/reservations",
+        "description": "Creates a reservation.",
+        "params": {
+          "name": {
+            "type": "string",
+            "description": "Guest's name",
+            "required": true
+          },
+          "email": {
+            "type": "string",
+            "description": "Guest's email",
+            "required": true
+          },
+          "dining_table_id": {
+            "type": "integer",
+            "description": "Dining table unique id",
+            "required": true
+          },
+          "restaurant_id": {
+            "type": "integer",
+            "description": "Restaurant's id",
+            "required": true
+          },
+          "guest_count": {
+            "type": "integer",
+            "description": "Total number of guests",
+            "required": true
+          },
+          "reservation_time": {
+            "type": "string",
+            "description": "Reservation time. It should be like HH:MM PM/AM. eg. 7:00PM ",
+            "required": true
+          },
+          "shift_id": {
+            "type": "integer",
+            "description": "It is a shift id. We have two shifts 1- morning shift, 2- evening shift",
+            "required": true
+          }
+        },
+        "request": {
+          "guest": {
+            "name": "altruist",
+            "email": "altruist2692@gmail.com"
+          },
+          "reservation": {
+            "table_id": 4,
+            "restaurant_id": 3,
+            "guest_count": 2,
+            "reservation_time": "6 PM",
+            "shift_id": 1
+          }
+        },
+        "response": {
+          "data": {
+            "reservation": {
+              "reservation_time": "09:00AM",
+              "guest_count": 2,
+              "guest_name": "altruist",
+              "dining_table_name": "Table-4"
+            }
+          }
+        }
+      }, {
+        "action": "PUT",
+        "uri": "/reservations/reservation_id",
+        "description": "Updates a reservation.",
+        "params": {
+          "dining_table_id": {
+            "type": "integer",
+            "description": "Dining table unique id",
+            "required": true
+          },
+          "restaurant_id": {
+            "type": "integer",
+            "description": "Restaurant's id",
+            "required": true
+          },
+          "guest_count": {
+            "type": "integer",
+            "description": "Total number of guests",
+            "required": true
+          },
+          "reservation_time": {
+            "type": "string",
+            "description": "Reservation time. It should be like HH:MM PM/AM. eg. 7:00PM ",
+            "required": true
+          },
+          "shift_id": {
+            "type": "integer",
+            "description": "It is a shift id. We have two shifts 1- morning shift, 2- evening shift",
+            "required": true
+          }
+        },
+        "request": {
+            "reservation": {
+              "dining_table_id": 3,
+              "restaurant_id": 1,
+              "guest_count": 3,
+              "reservation_time": "9 PM",
+              "shift_id": 2
+            }
+        },
+        "response": {
+            "data": {
+              "reservation": {
+                "reservation_time": "09:00PM",
+                "guest_count": 3,
+                "guest_name": "john",
+                "dining_table_name": "Table-3"
+              }
+            }
+          }
+        }
+    ]
+  }
+}

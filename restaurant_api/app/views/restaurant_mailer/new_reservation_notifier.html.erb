@@ -1,0 +1,29 @@
+<h4>Hello <%= @reservation.restaurant.name %></h4>
+
+<p>Congratulations! Your restaurant just got a new reservation! Please find reservation details below.<p>
+
+<table border="1">
+  <tr>
+    <td>Guest Name</td>
+    <td><%= @guest.name %></td>
+  </tr>
+  <tr>
+    <td>Guest Email</td>
+    <td><%= @guest.email %></td>
+  </tr>
+  <tr>
+    <td>Reservation time</td>
+    <td><%= @reservation.parsed_reservation_time %></td>
+  </tr>
+  <tr>
+    <td>Total Guests</td>
+    <td><%= @reservation.guest_count %></td>
+  </tr>
+  <tr>
+    <td>Dining Table</td>
+    <td><%= @reservation.dining_table.name %></td>
+  </tr>
+</table>
+
+<br><br>
+<p>Thank you.</p>
